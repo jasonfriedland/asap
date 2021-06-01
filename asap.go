@@ -3,7 +3,6 @@ package asap
 import (
 	"crypto/rsa"
 	"crypto/x509"
-	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -22,7 +21,7 @@ type Client struct {
 	Expiry     uint64
 }
 
-// NewASAPConfig populates our config from the environment.
+// NewClient populates a new Client from the values set in the environment.
 func NewClient() (*Client, error) {
 	// Key from environment is a PKCS8 encoded data URL
 	dataURL, err := dataurl.DecodeString(os.Getenv("ASAP_PRIVATE_KEY"))
@@ -37,7 +36,7 @@ func NewClient() (*Client, error) {
 	// Key ID
 	kid, ok := dataURL.Params["kid"]
 	if !ok {
-		return nil, errors.New("kid not found in dataURL query string")
+		return nil, fmt.Errorf("kid not found in dataURL")
 	}
 	// Return a new asapConfig
 	return &Client{
