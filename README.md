@@ -1,8 +1,6 @@
 asap
 ====
 
-[![Build Status](https://travis-ci.com/jasonfriedland/asap.svg?branch=main)](https://travis-ci.com/jasonfriedland/asap)
-
 A simple client package for [ASAP](https://s2sauth.bitbucket.io/) authentication.
 
 Installation
