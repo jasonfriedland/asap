@@ -9,6 +9,6 @@ require (
 
 require (
 	github.com/SermoDigital/jose v0.9.2-0.20161205224733-f6df55f235c2 // indirect
-	github.com/google/uuid v1.1.2 // indirect
-	github.com/pquerna/cachecontrol v0.0.0-20201205024021-ac21108117ac // indirect
+	github.com/google/uuid v1.3.0 // indirect
+	github.com/pquerna/cachecontrol v0.1.0 // indirect
 )
