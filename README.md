@@ -1,7 +1,7 @@
 asap
 ====
 
-![test](https://github.com/jasonfriedland/asap/actions/workflows/actions.yml/badge.svg)
+[![Go Tests](https://github.com/jasonfriedland/asap/actions/workflows/actions.yml/badge.svg)](https://github.com/jasonfriedland/asap/actions)
 
 A simple client package for [ASAP](https://s2sauth.bitbucket.io/) authentication.
 
