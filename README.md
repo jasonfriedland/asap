@@ -1,7 +1,7 @@
 asap
 ====
 
-[![CircleCI](https://circleci.com/gh/jasonfriedland/asap/tree/main.svg?style=svg)](https://circleci.com/gh/jasonfriedland/asap/tree/main)
+![test](https://github.com/jasonfriedland/asap/actions/workflows/actions.yml/badge.svg)
 
 A simple client package for [ASAP](https://s2sauth.bitbucket.io/) authentication.
 
