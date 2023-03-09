@@ -4,11 +4,11 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"fmt"
-	"os"
 	"strings"
 	"time"
 
 	"bitbucket.org/atlassian/go-asap"
+	"github.com/kelseyhightower/envconfig"
 	"github.com/vincent-petithory/dataurl"
 )
 
@@ -21,10 +21,24 @@ type Client struct {
 	Expiry     uint64
 }
 
+// asapConfig holds ASAP config from the environment.
+type asapConfig struct {
+	PrivateKey string `split_words:"true"`
+	Issuer     string
+	Audience   string
+}
+
 // NewClient populates a new Client from the values set in the environment.
 func NewClient() (*Client, error) {
+	// ASAP config from env
+	var conf asapConfig
+	err := envconfig.Process("asap", &conf)
+	fmt.Println(conf)
+	if err != nil {
+		return nil, err
+	}
 	// Key from environment is a PKCS8 encoded data URL
-	dataURL, err := dataurl.DecodeString(os.Getenv("ASAP_PRIVATE_KEY"))
+	dataURL, err := dataurl.DecodeString(conf.PrivateKey)
 	if err != nil {
 		return nil, err
 	}
@@ -41,8 +55,8 @@ func NewClient() (*Client, error) {
 	// Return a new asapConfig
 	return &Client{
 		Kid:        kid,
-		Issuer:     os.Getenv("ASAP_ISSUER"),
-		Audience:   strings.Split(os.Getenv("ASAP_AUDIENCE"), ","),
+		Issuer:     conf.Issuer,
+		Audience:   strings.Split(conf.Audience, ","),
 		PrivateKey: rsaPrivateKey.(*rsa.PrivateKey),
 	}, nil
 }
