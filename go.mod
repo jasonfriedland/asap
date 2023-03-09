@@ -1,6 +1,6 @@
 module github.com/jasonfriedland/asap
 
-go 1.20
+go 1.19
 
 require (
 	bitbucket.org/atlassian/go-asap v0.0.0-20230307195420-603a3683f3fe

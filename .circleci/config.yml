@@ -4,7 +4,7 @@ jobs:
   test:
     working_directory: ~/repo
     docker:
-      - image: circleci/golang:1.20
+      - image: circleci/golang:1.19
     steps:
       - checkout
       - restore_cache:
